@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #FFF;
+        }
+        #particles-js {
+            position: fixed; /* Fix the background animation */
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent black header */
+            text-align: center;
+            padding: 20px;
+            font-size: 32px;
+            transition: background-color 0.5s, transform 0.3s, box-shadow 0.3s, color 0.5s, text-shadow 0.3s;
+            cursor: pointer;
+            color: #FFF;
+        }
+        header:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly darker transparent black on hover */
+            transform: scale(1.02);
+            box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2);
+            color: #FFF; /* White text on hover */
+            text-shadow: 1px 1px 2px #000; /* Text shadow on hover */
+        }
+        .description {
+            background-color: rgba(0, 0, 0, 0.6); /* Faded black background for description */
+            text-align: center;
+            padding: 20px;
+            color: #FFF;
+            position: relative;
+            transform: translateY(-20px); /* Floating effect */
+            transition: background-color 0.5s, transform 0.3s;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        .label1 {
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 15px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background-color: #222;
+        }
+        .label2 {
+            margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 15px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background-color: #222;
+            color:white;
+        }
+        li:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.1);
+        }
+        a {
+            text-decoration: none;
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .chat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-bubble {
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px;
+            max-width: 70%;
+        }
+        
+        .chat-left {
+            background-color: #DCF8C6; /* Light green for the left chat bubble */
+            align-self: flex-start;
+        }
+        
+        .chat-right {
+            background-color: #E5E5EA; /* Light gray for the right chat bubble */
+            align-self: flex-end;
+        }
+        
+        .label1 {
+            margin: 0;
+        }
+        
+        .label2 {
+            margin: 0;
+            width: 70%; /* Adjust the width to your preference */
+        }
+        .submit-button {
+            background-color: #f39c12; /* Orange button color */
+            color: #FFF; /* White text color */
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px; /* Adjust the margin as needed */
+            float: right; /* Place the button on the right side of the textbox */
+        }
+        
+        .submit-button:hover {
+            background-color: #f1c40f; /* Darker orange on hover */
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        <h1 class="animate__animated animate__fadeInDown">{{ques.q_name}}</h1>
+    </header>
+    <div class="description animate__animated animate__fadeIn">
+        <p>{{ques.q_desc}}</p>
+    </div>
+    <div class="container animate__animated animate__fadeIn">
+        <h2>Craft your idea into a perfect solution</h2>
+        <form action="suggest">
+        {%csrf_token%}
+        <div class="chat">
+            <div class="chat-bubble chat-left">
+                <label class="label1">Describe your basic solution in words</label>
+            </div>
+            <div class="chat-bubble chat-right">
+                <textarea class="label2" placeholder="Enter here" name="t1"></textarea>
+                <input type="submit" class="submit-button" id="b1">Submit</input>
+            </div>
+        </div>
+    </form>
+        <!-- Add more questions as needed -->
+    </div>
+    
+    
+    
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80
+                },
+                "color": {
+                    "value": "#f39c12"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "size": {
+                    "value": 3
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 5
+                }
+            }
+        });
+        
+
+    </script>
+</body>
+</html>
